@@ -3,6 +3,7 @@
 #include "Background.hpp"
 #include "Player.hpp"
 #include "NPC.hpp"
+#include "Bullet.hpp"
  
 // Components 
 #include "Sprite.hpp"
@@ -80,6 +81,8 @@ std::shared_ptr<Background> GameObjectFactory::createBackground()
 
     background->setTransform(backgroundTransform);
 
+    background->enable();
+
     return background;
 }
 
@@ -139,6 +142,8 @@ std::shared_ptr<Player> GameObjectFactory::createPlayer()
     // setup two way relationship
     collider->setGameObject(player);
     player->setCollisionComponent(collider);
+
+    player->enable();
 
     return player;
 }
@@ -210,5 +215,79 @@ std::shared_ptr<NPC> GameObjectFactory::createNPC()
     collider->setGameObject(npc);
     npc->setCollisionComponent(collider);
 
+    npc->enable();
+
     return npc;
+}
+
+std::shared_ptr<Bullet> GameObjectFactory::createBullet()
+{
+     std::shared_ptr<Bullet> bullet = std::shared_ptr<Bullet>(new Bullet());
+
+    // Sprite
+    std::shared_ptr<Sprite> bulletSprite = std::shared_ptr<Sprite>(new Sprite());
+
+    // Texture
+    std::shared_ptr<Texture> bulletTexture = std::shared_ptr<Texture>(new Texture());
+    
+    // This mess loads a texture .. make this better. 
+    SDL_Surface* temp = IMG_Load("assets/images/playerShip.png");
+
+    bulletTexture->setTexture(SDL_CreateTextureFromSurface(renderer->getRenderer(), temp));
+
+    SDL_FreeSurface(temp);
+    temp = nullptr;
+
+    SDL_Rect source;
+    source.x = 0;
+    source.y = 0;
+    
+    SDL_QueryTexture(bulletTexture->getTexture(), NULL, NULL, &source.w, &source.h);
+    bulletTexture->setSourceRectangle(source);
+
+    bulletSprite->setTexture(bulletTexture);
+    
+    // Setup two way relationship
+    bullet->setSprite(bulletSprite);
+    bulletSprite->setGameObject(bullet);
+
+    // Transform
+    std::shared_ptr<Transform> bulletTransform = std::shared_ptr<Transform>(new Transform());
+    bulletTransform->setAngle(0.0f);
+
+    std::shared_ptr<Vector3f> offscreen = std::shared_ptr<Vector3f>(new Vector3f(0.0f,0.0f,0.0f));
+
+    float w = Window::WINDOW_WIDTH;
+    float h = Window::WINDOW_HEIGHT;
+
+    // Make this a random offscreen position
+    offscreen->setX(w+10.0f);
+    offscreen->setY(h/2.0f);
+    
+    bulletTransform->setPosition(offscreen);  
+
+    bulletTransform->setScale(std::shared_ptr<Vector3f>(new Vector3f(1.0f,1.0f,0.0f))); 
+
+    bullet->setTransform(bulletTransform);
+
+    // Physics
+    std::shared_ptr<PhysicsComponent> physics = std::shared_ptr<PhysicsComponent>(new PhysicsComponent());
+    physics->setVelocity(std::shared_ptr<Vector3f>(new Vector3f(1.0f,1.0f,0.0f)));
+    
+    // setup two way relationship
+    physics->setGameObject(bullet);
+    bullet->setPhysicsComponent(physics);
+
+    // Collider
+    std::shared_ptr<Collider> collider = std::shared_ptr<Collider>(new Collider());
+    collider->setRadius(bulletTexture->getSourceRectangle().w/2.0f);
+    collider->setResolution(true);
+
+    // setup two way relationship
+    collider->setGameObject(bullet);
+    bullet->setCollisionComponent(collider);
+
+    bullet->enable();
+
+    return bullet;
 }

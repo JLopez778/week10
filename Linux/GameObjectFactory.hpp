@@ -7,6 +7,7 @@ class Background;
 class Player;
 class Renderer; 
 class NPC;
+class Bullet;
 
 class GameObjectFactory
 {
@@ -31,6 +32,7 @@ public:
     std::shared_ptr<Background> createBackground();
     std::shared_ptr<Player> createPlayer();
     std::shared_ptr<NPC> createNPC();
+	std::shared_ptr<Bullet> createBullet();
 };
 
 #endif
