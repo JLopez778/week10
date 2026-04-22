@@ -1,5 +1,5 @@
 #ifndef BULLET_HPP
-#define Bullet_HPP
+#define BULLET_HPP
 
 #include "GameObject.hpp"
 
@@ -25,7 +25,7 @@ public:
 
     void handleCollision(std::shared_ptr<Collider> other);
 
-    static const float MAX_TTL = 10.0f;
+    static const float MAX_TTL;
 private:
     int damage;
     int ttl;

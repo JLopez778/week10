@@ -8,6 +8,8 @@
 
 #include <iostream>  
 
+const float Bullet::MAX_TTL = 0.0f;
+
 Bullet::Bullet() : GameObject()
 {
     name = "Bullet";
@@ -28,6 +30,9 @@ void Bullet::update()
     float delta = timer->getDeltaTime();
 
     ttl -= delta;
+
+    if(ttl < 0.0f) 
+        despawn();
 
 }
 
