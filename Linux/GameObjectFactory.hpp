@@ -33,6 +33,8 @@ public:
     std::shared_ptr<Player> createPlayer();
     std::shared_ptr<NPC> createNPC();
 	std::shared_ptr<Bullet> createBullet();
+
+	const int MAX_BULLETS = 32;
 };
 
 #endif

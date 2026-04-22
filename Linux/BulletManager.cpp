@@ -6,6 +6,7 @@
 #include "GameObject.hpp"
 #include "Transform.hpp"
 #include "Vector3f.hpp"
+#include "GameObjectFactory.hpp"
 
 BulletManager::BulletManager()
 {
@@ -26,6 +27,15 @@ BulletManager::~BulletManager()
 void BulletManager::init(int maxObjects)
 {
     bullets.resize(maxObjects);
+
+    // create bullets - using factory
+    std::vector<std::shared_ptr<Bullet>>::iterator itt;
+    for(itt = bullets.begin(); itt != bullets.end(); ++itt)
+    {
+         std::shared_ptr<Bullet> temp = *itt;
+         temp = GameObjectFactory::instance()->createBullet();
+         temp->disable();
+    }
 
 }
 

@@ -3,6 +3,7 @@
 #include "PhysicsComponent.hpp"
 #include "Vector3f.hpp"
 #include "Collider.hpp"
+#include "BulletManager.hpp"
 
 #include <iostream>  
 
@@ -10,10 +11,12 @@ Player::Player() : GameObject()
 {
     speed = 500.0f;
     name = "player";
+    bulletManager = nullptr;
 }
 
 Player::~Player()
 {
+    bulletManager.reset();
 }
 
 void Player::update()
@@ -50,4 +53,9 @@ float Player::getSpeed()
 void Player::handleCollision(std::shared_ptr<Collider> other)
 {
     std::cout << "Player says: Ouch!" << std::endl;
+}
+
+void Player::init(int maxBullets)
+{
+    bulletManager.reset(new BulletManager());
 }

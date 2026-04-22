@@ -66,7 +66,7 @@ void CollisionEngine::check()
         if(colliderOne == nullptr)
             continue;
 
-        if(colliderOne->getGameObject()->isEnabled() != false)
+        if(colliderOne->getGameObject()->isEnabled() == false)
             continue;
 
         std::shared_ptr<Collider> colliderTwo;
@@ -80,7 +80,7 @@ void CollisionEngine::check()
             if(colliderTwo == nullptr)
                 continue;
 
-            if(colliderTwo->getGameObject()->isEnabled() != false)
+            if(colliderTwo->getGameObject()->isEnabled() == false)
                 continue;
 
             // Check we're not comparing to ourself!

@@ -89,6 +89,7 @@ std::shared_ptr<Background> GameObjectFactory::createBackground()
 std::shared_ptr<Player> GameObjectFactory::createPlayer()
 {
     std::shared_ptr<Player> player = std::shared_ptr<Player>(new Player());
+    player->init(MAX_BULLETS);
 
     // Sprite
     std::shared_ptr<Sprite> playerSprite = std::shared_ptr<Sprite>(new Sprite());

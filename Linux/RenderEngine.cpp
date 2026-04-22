@@ -81,7 +81,7 @@ void RenderEngine::render()
         if(sprite == nullptr)
             continue;
 
-        if(sprite->getGameObject()->isEnabled() != false)
+        if(sprite->getGameObject()->isEnabled() == false)
             continue;
 
         texture = sprite->getTexture();

@@ -72,7 +72,7 @@ void PhysicsEngine::update(float deltaTime)
 
         gameObject = body->getGameObject();
 
-        if(gameObject->isEnabled() != false)
+        if(gameObject->isEnabled() == false)
             continue;
 
         transform = gameObject->getTransform();
