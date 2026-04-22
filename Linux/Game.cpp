@@ -89,7 +89,7 @@ void Game::init()
     std::shared_ptr<Background> background = GameObjectFactory::instance()->createBackground();
     registerGameObject(background);
 
-std::shared_ptr<Player> player = GameObjectFactory::instance()->createPlayer();
+    std::shared_ptr<Player> player = GameObjectFactory::instance()->createPlayer();
     registerGameObject(player);
 
     std::shared_ptr<NPC> npc = GameObjectFactory::instance()->createNPC();
