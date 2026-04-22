@@ -30,6 +30,11 @@ public:
     void setName(std::string newName);
     std::string getName();
 
+    void enable();
+    void disable();
+
+    bool isEnabled();
+
     virtual void update();
 
     virtual void handleCollision(std::shared_ptr<Collider> other) = 0;
@@ -40,6 +45,7 @@ protected:
     std::shared_ptr<Transform> transform;
     std::shared_ptr<PhysicsComponent> physicsComponent;
     std::shared_ptr<Collider> collider;
+    bool enabled;
 };
 
 #endif

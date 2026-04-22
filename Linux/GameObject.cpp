@@ -9,6 +9,7 @@ GameObject::GameObject()
 {
     sprite = nullptr;
     transform = nullptr;
+    enabled = false;
 }
 
 GameObject::~GameObject()
@@ -75,4 +76,19 @@ std::string GameObject::getName()
 void GameObject::update()
 {
     
+}
+
+void GameObject::enable()
+{
+    enabled = true;
+}
+
+void GameObject::disable()
+{
+    enabled = false;
+}
+
+bool GameObject::isEnabled()
+{
+   return enabled;
 }

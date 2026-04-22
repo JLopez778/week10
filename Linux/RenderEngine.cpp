@@ -81,6 +81,9 @@ void RenderEngine::render()
         if(sprite == nullptr)
             continue;
 
+        if(sprite->getGameObject()->isEnabled() != false)
+            continue;
+
         texture = sprite->getTexture();
         source = texture->getSourceRectangle();
         tex = texture->getTexture();

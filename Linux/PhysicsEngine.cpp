@@ -71,6 +71,10 @@ void PhysicsEngine::update(float deltaTime)
             continue;
 
         gameObject = body->getGameObject();
+
+        if(gameObject->isEnabled() != false)
+            continue;
+
         transform = gameObject->getTransform();
         position = transform->getPosition();
         velocity = body->getVelocity();
