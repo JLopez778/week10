@@ -1,15 +1,20 @@
 #include "InputManager.hpp"
+#include "Vector3f.hpp"
 
 InputManager::InputManager()
 {
     keyStates = nullptr;
     quit = false;
+    fire = false;
+    mousePosition = nullptr;
 }
 
 void InputManager::init()
 {
     // Track Keystates array
     keyStates = SDL_GetKeyboardState(NULL);
+
+    mousePosition.reset(new Vector3f(0.0f,0.0f,0.0f));
 }
 
 InputManager::~InputManager()
@@ -59,4 +64,30 @@ void InputManager::update()
             break;
         }
     }
+
+    int mouseX;
+    int mouseY;
+
+    Uint32 button = SDL_GetMouseState(&mouseX, &mouseY);
+
+    this->mousePosition->setX(mouseX);
+    this->mousePosition->setY(mouseY);
+
+    if (button) 
+    {
+        if(button == SDL_BUTTON(SDL_BUTTON_RIGHT))
+            fire = true;
+        else
+            fire = false;
+    }
+}
+
+std::shared_ptr<Vector3f> InputManager::getMousePosition()
+{
+    return this->mousePosition;
+}
+
+bool InputManager::getFire()
+{
+    return fire;
 }

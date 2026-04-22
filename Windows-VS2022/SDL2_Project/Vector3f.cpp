@@ -78,3 +78,4 @@ void Vector3f::normalise()
     float scale = 1.0f/this->getLength();
     this->scale(scale);
 }
+

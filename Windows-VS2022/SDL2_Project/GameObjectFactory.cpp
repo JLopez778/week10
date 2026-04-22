@@ -80,6 +80,9 @@ std::shared_ptr<Background> GameObjectFactory::createBackground()
 
     background->setTransform(backgroundTransform);
 
+    // enable
+    background->enable();
+
     return background;
 }
 
@@ -139,6 +142,8 @@ std::shared_ptr<Player> GameObjectFactory::createPlayer()
     // setup two way relationship
     collider->setGameObject(player);
     player->setCollisionComponent(collider);
+
+    player->enable();
 
     return player;
 }
@@ -209,6 +214,8 @@ std::shared_ptr<NPC> GameObjectFactory::createNPC()
     // setup two way relationship
     collider->setGameObject(npc);
     npc->setCollisionComponent(collider);
+
+    npc->enable();
 
     return npc;
 }

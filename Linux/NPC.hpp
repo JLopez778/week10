@@ -17,8 +17,14 @@ public:
 
     void ai();
     void handleCollision(std::shared_ptr<Collider> other);
+    void takeDamage(int damage);
+    int getDamage();
+
+    static const int MAX_HP = 50;
 private:
     float speed;
+    int hp;
+    int damage;
 };
 
 #endif

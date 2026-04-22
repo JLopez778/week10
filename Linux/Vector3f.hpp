@@ -23,6 +23,8 @@ public:
     float getLength();
     void normalise();
 
+    void rotate2D(float degrees);
+
 private:
     float x;
     float y;

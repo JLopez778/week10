@@ -51,3 +51,8 @@ void Player::handleCollision(std::shared_ptr<Collider> other)
 {
     std::cout << "Player says: Ouch!" << std::endl;
 }
+
+void Player::init(int maxBullets)
+{
+    bulletManager.reset(new BulletManager());
+}
