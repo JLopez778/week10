@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Component.cpp" />
+    <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="Window.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Vector3f.cpp" />
+    <ClCompile Include="Transform.cpp" />
+    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="Background.cpp" />
+    <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="RenderEngine.cpp" />
+    <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="PhysicsComponent.cpp" />
+    <ClCompile Include="PhysicsEngine.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="NPC.cpp" />
+    <ClCompile Include="GameObjectFactory.cpp" />
+    <ClCompile Include="Collider.cpp" />
+    <ClCompile Include="CollisionEngine.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Component.hpp" />
+    <ClInclude Include="Game.hpp" />
+    <ClInclude Include="InputManager.hpp" />
+    <ClInclude Include="Renderer.hpp" />
+    <ClInclude Include="SDL2_Common.h" />
+    <ClInclude Include="Timer.hpp" />
+    <ClInclude Include="Window.hpp" />
+    <ClInclude Include="Vector3f.hpp" />
+    <ClInclude Include="Transform.hpp" />
+    <ClInclude Include="GameObject.hpp" />
+    <ClInclude Include="Background.hpp" />
+    <ClInclude Include="Sprite.hpp" />
+    <ClInclude Include="RenderEngine.hpp" />
+    <ClInclude Include="Texture.hpp" />
+    <ClInclude Include="PhysicsComponent.hpp" />
+    <ClInclude Include="PhysicsEngine.hpp" />
+    <ClInclude Include="Player.hpp" />
+    <ClInclude Include="NPC.hpp" />
+    <ClInclude Include="GameObjectFactory.hpp" />
+    <ClInclude Include="Collider.hpp" />
+    <ClInclude Include="CollisionEngine.hpp" />
+  </ItemGroup>
+</Project>
