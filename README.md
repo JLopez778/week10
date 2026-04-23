@@ -1,9 +1,14 @@
 # DESCRIPTION #
 
 
-Week 10 Solution - Adding Bullet and Bullet Manager. 
+Week 10 Solution - Adding Bullet and Bullet Manager.
 
 **Note:** A lot of minor bugs with this weeks additions turned into a much larger undertaking as there some bugs introduced in earlier solutions. 
+
+Outstanding bugs:
+- Player fire rate (needs a cooldown timer), something like the time to live (ttl) we use in Bullet. 
+- Collision logic needs checking!
+- NPC is turned off (disabled during testing)
 
 |Operating System|SDL2 Version|SDL2\_image Version|Status|
 |:--|---|---|:-:|
