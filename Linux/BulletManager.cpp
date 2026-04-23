@@ -8,6 +8,8 @@
 #include "Vector3f.hpp"
 #include "GameObjectFactory.hpp"
 
+#include <iostream>
+
 BulletManager::BulletManager()
 {
     maxObjects = 0;
@@ -32,38 +34,11 @@ void BulletManager::init(int maxObjects)
     std::vector<std::shared_ptr<Bullet>>::iterator itt;
     for(itt = bullets.begin(); itt != bullets.end(); ++itt)
     {
-         std::shared_ptr<Bullet> temp = *itt;
-         temp = GameObjectFactory::instance()->createBullet();
-         temp->disable();
+         //std::shared_ptr<Bullet> temp = *itt;
+         (*itt) = GameObjectFactory::instance()->createBullet();
+         (*itt)->disable();
     }
 
-}
-
-void BulletManager::addBullet(std::shared_ptr<Bullet> bullet)
-{
-    bullets.push_back(bullet);
-}
-
-bool BulletManager::removeBullet(std::shared_ptr<Bullet> bullet)
-{
-    bool deleted = false;
-    std::vector<std::shared_ptr<Bullet>>::iterator itt;
-    for(itt = bullets.begin(); itt != bullets.end(); ++itt)
-    {
-        std::shared_ptr<Bullet> temp = *itt;
-        if(temp == bullet)
-        {
-            bullets.erase(itt);
-            // itt - now invalid as we've altered the vector!
-            deleted = true;
-            break;
-
-            /* To erase all matching*/
-            //itt = bullets.erase(itt);
-        }
-    }
-
-    return deleted;
 }
 
 void BulletManager::spawnBullet(std::shared_ptr<Vector3f> position, std::shared_ptr<Vector3f> direction)
@@ -73,7 +48,10 @@ void BulletManager::spawnBullet(std::shared_ptr<Vector3f> position, std::shared_
     if(bullet != nullptr)
     {   
         bullet->spawn(position, direction);
+        std::cout << "Bullet manager spawning" << std::endl;
     }
+
+    std::cout << "Bullet manager has no bullets" << std::endl;
 
     // if no bullets just ignore?
 }
@@ -83,9 +61,9 @@ std::shared_ptr<Bullet> BulletManager::nextFree()
     std::vector<std::shared_ptr<Bullet>>::iterator itt;
     for(itt = bullets.begin(); itt != bullets.end(); ++itt)
     {
-        std::shared_ptr<Bullet> temp = *itt;
-        if(temp->isEnabled() == false)
-            return temp;
+        //std::shared_ptr<Bullet> temp = *itt;
+        if((*itt)->isEnabled() == false)
+            return (*itt);
     }
 
     return nullptr;

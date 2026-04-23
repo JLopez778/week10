@@ -70,6 +70,7 @@ void Player::update()
         std::shared_ptr<Vector3f> position(new Vector3f(transform->getPosition()->getX(), transform->getPosition()->getY(), transform->getPosition()->getZ()));
 
         bulletManager->spawnBullet(position, direction);
+
     }
 }
 
@@ -98,6 +99,7 @@ void Player::handleCollision(std::shared_ptr<Collider> other)
 void Player::init(int maxBullets)
 {
     bulletManager.reset(new BulletManager());
+    bulletManager->init(MAX_BULLETS);
 }
 
 void Player::takeDamage(int damage)

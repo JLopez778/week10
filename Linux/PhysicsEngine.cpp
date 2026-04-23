@@ -5,6 +5,8 @@
 #include "Transform.hpp"
 #include "Vector3f.hpp" 
 
+#include <iostream>
+
 PhysicsEngine::PhysicsEngine()
 {
     maxObjects = 0;
@@ -28,7 +30,20 @@ void PhysicsEngine::init(int maxObjects)
 
 void PhysicsEngine::addPhysicsComponent(std::shared_ptr<PhysicsComponent> body)
 {
-    bodies.push_back(body);
+    bool added = false;
+    std::vector<std::shared_ptr<PhysicsComponent>>::iterator itt;
+    for(itt = bodies.begin(); itt != bodies.end(); ++itt)
+    {
+        if(*itt == nullptr)
+        {
+            *itt = body;
+            added = true;
+            break;
+        }
+    }
+
+    if(added == false)
+        std::cout << "Ran out of pre-allocated physics components" << std::endl;
 }
 
 bool PhysicsEngine::removePhysicsComponent(std::shared_ptr<PhysicsComponent> body)

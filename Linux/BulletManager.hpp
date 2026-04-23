@@ -15,9 +15,6 @@ public:
 
     void init(int maxObjects);
 
-    void addBullet(std::shared_ptr<Bullet> bullet);
-    bool removeBullet(std::shared_ptr<Bullet> bullet);
-
     void spawnBullet(std::shared_ptr<Vector3f> position, std::shared_ptr<Vector3f> direction);
 
 private:

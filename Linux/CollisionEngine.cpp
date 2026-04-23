@@ -5,6 +5,8 @@
 #include "Transform.hpp"
 #include "Vector3f.hpp" 
 
+#include <iostream>
+
 CollisionEngine::CollisionEngine()
 {
     maxObjects = 0;
@@ -28,7 +30,20 @@ void CollisionEngine::init(int maxObjects)
 
 void CollisionEngine::addCollider(std::shared_ptr<Collider> body)
 {
-    colliders.push_back(body);
+    bool added = false;
+    std::vector<std::shared_ptr<Collider>>::iterator itt;
+    for(itt = colliders.begin(); itt != colliders.end(); ++itt)
+    {
+        if(*itt == nullptr)
+        {
+            *itt = body;
+            added = true;
+            break;
+        }
+    }
+
+    if(added == false)
+        std::cout << "Ran out of pre-allocated collider components" << std::endl;
 }
 
 bool CollisionEngine::removeCollider(std::shared_ptr<Collider> body)

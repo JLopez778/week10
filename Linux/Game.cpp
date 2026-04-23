@@ -179,7 +179,20 @@ std::shared_ptr<Renderer> Game::getRenderer()
 
 void Game::registerGameObject(std::shared_ptr<GameObject> newGO)
 {
-    gameObjects.push_back(newGO);
+    bool added = false;
+    std::vector<std::shared_ptr<GameObject>>::iterator itt;
+    for(itt = gameObjects.begin(); itt != gameObjects.end(); ++itt)
+    {
+        if(*itt == nullptr)
+        {
+            *itt = newGO;
+            added = true;
+            break;
+        }
+    }
+
+    if(added == false)
+        std::cout << "Ran out of pre-allocated game objects" << std::endl;
 
     std::shared_ptr<Sprite> sprite = newGO->getSprite();
 

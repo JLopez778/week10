@@ -23,6 +23,7 @@ public:
     void handleCollision(std::shared_ptr<Collider> other);
 
     static const int MAX_HP = 100;
+    static const int MAX_BULLETS = 10;
 private:
     float speed;
     int hp;

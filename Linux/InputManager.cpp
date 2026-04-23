@@ -1,5 +1,6 @@
 #include "InputManager.hpp"
 #include "Vector3f.hpp"
+#include <iostream>
 
 InputManager::InputManager()
 {
@@ -77,8 +78,10 @@ void InputManager::update()
 
     if (button) 
     {
-        if(button == SDL_BUTTON(SDL_BUTTON_RIGHT))
+        if(button == SDL_BUTTON(SDL_BUTTON_LEFT))
+        {
             fire = true;
+        }   
     }
 }
 

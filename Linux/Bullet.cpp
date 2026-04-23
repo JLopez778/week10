@@ -8,7 +8,7 @@
 
 #include <iostream>  
 
-const float Bullet::MAX_TTL = 0.0f;
+const float Bullet::MAX_TTL = 0.01f;
 
 Bullet::Bullet() : GameObject()
 {
@@ -28,6 +28,8 @@ Bullet::~Bullet()
 void Bullet::update()
 {
     float delta = timer->getDeltaTime();
+
+    std::cout << "TTL:" << ttl << std::endl;
 
     ttl -= delta;
 
@@ -78,15 +80,17 @@ void Bullet::spawn(std::shared_ptr<Vector3f> position, std::shared_ptr<Vector3f>
     this->getPhysicsComponent()->setVelocity(velocity);
 
     ttl = MAX_TTL;
+
+    this->enable();
 }
 
 void Bullet::despawn()
 {
     this->disable();
-    ttl = 0.0f;
+    ttl = -10.0f;
 }
 
 void Bullet::handleCollision(std::shared_ptr<Collider> other)
 {
-    despawn();
+    //despawn();
 }

@@ -7,6 +7,8 @@
 #include "Transform.hpp"
 #include "Vector3f.hpp"
 
+#include <iostream>
+
 RenderEngine::RenderEngine()
 {
     maxObjects = 0;
@@ -32,7 +34,20 @@ void RenderEngine::init(int maxObjects, std::shared_ptr<Renderer> renderer)
 
 void RenderEngine::addSprite(std::shared_ptr<Sprite> sprite)
 {
-    sprites.push_back(sprite);
+    bool added = false;
+    std::vector<std::shared_ptr<Sprite>>::iterator itt;
+    for(itt = sprites.begin(); itt != sprites.end(); ++itt)
+    {
+        if(*itt == nullptr)
+        {
+            *itt = sprite;
+            added = true;
+            break;
+        }
+    }
+
+    if(added == false)
+        std::cout << "Ran out of pre-allocated sprite components" << std::endl;
 }
 
 bool RenderEngine::removeSprite(std::shared_ptr<Sprite> sprite)
