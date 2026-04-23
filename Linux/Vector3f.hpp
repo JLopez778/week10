@@ -23,7 +23,7 @@ public:
     float getLength();
     void normalise();
 
-    void rotate2D(float degrees);
+    void rotate2D(float rads);
 
 private:
     float x;

@@ -20,7 +20,7 @@ public:
     void setSpeed(float speed);
     float getSpeed();
 
-    void spawn(std::shared_ptr<Vector3f> position, std::shared_ptr<Vector3f> direction);
+    void spawn(std::shared_ptr<Vector3f> position, std::shared_ptr<Vector3f> direction, float orientation);
     void despawn();
 
     void handleCollision(std::shared_ptr<Collider> other);

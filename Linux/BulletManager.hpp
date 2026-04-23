@@ -15,7 +15,7 @@ public:
 
     void init(int maxObjects);
 
-    void spawnBullet(std::shared_ptr<Vector3f> position, std::shared_ptr<Vector3f> direction);
+    void spawnBullet(std::shared_ptr<Vector3f> position, std::shared_ptr<Vector3f> direction, float orientation);
 
 private:
     int maxObjects;

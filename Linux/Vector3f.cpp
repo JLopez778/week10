@@ -79,11 +79,8 @@ void Vector3f::normalise()
     this->scale(scale);
 }
 
-void Vector3f::rotate2D(float degrees)
+void Vector3f::rotate2D(float radians)
 {
-    // Convert degrees to radians
-    float radians = degrees * (M_PI / 180.0f);
-
     float cosTheta = std::cosf(radians);
     float sinTheta = std::sinf(radians);
 

@@ -54,18 +54,20 @@ void Player::update()
     std::shared_ptr<Vector3f> mousePos = InputManager::instance()->getMousePosition();
     std::shared_ptr<Vector3f> centre = transform->getPosition();
 
-    float angle = atan2f(mousePos->getY() - centre->getY(), mousePos->getX() - centre->getX());
-    angle = angle * (180.0f/M_PI); // convert to degrees
-    this->getTransform()->setAngle(angle);
+    float angleRads = atan2f(mousePos->getY() - centre->getY(), mousePos->getX() - centre->getX());
+    float angleDegrees = angleRads * (180.0f/M_PI); // convert to degrees
+    this->getTransform()->setAngle(angleDegrees);
 
     // Firing
 
     if(InputManager::instance()->getFire() == true)
     {
-        std::shared_ptr<Vector3f> direction(new Vector3f(0.0f,1.0f,0.0f));
-        direction->rotate2D(angle);// + this->getSprite()->getTexture()->getAngleOffset());
+        std::shared_ptr<Vector3f> direction(new Vector3f(0.0f,-1.0f,0.0f));
+        float rotation = angleRads + (this->getSprite()->getTexture()->getAngleOffset() * (M_PI/180.0f));
+        direction->rotate2D(rotation);
 
         std::cout << "direction:" << direction->getX() << "," << direction->getY() << std::endl;
+        std::cout << "angle:" << angleRads << std::endl;
 
         std::shared_ptr<Vector3f> position(new Vector3f(transform->getPosition()->getX(), transform->getPosition()->getY(), transform->getPosition()->getZ()));
 
@@ -73,7 +75,7 @@ void Player::update()
         offset.scale(64);
         position->add(offset);
 
-        bulletManager->spawnBullet(position, direction);
+        bulletManager->spawnBullet(position, direction, rotation * (180.0f/M_PI));
 
     }
 }

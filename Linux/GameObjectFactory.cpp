@@ -252,6 +252,7 @@ std::shared_ptr<Bullet> GameObjectFactory::createBullet()
     
     SDL_QueryTexture(bulletTexture->getTexture(), NULL, NULL, &source.w, &source.h);
     bulletTexture->setSourceRectangle(source);
+   // bulletTexture->setAngleOffset(90.0f);
 
     bulletSprite->setTexture(bulletTexture);
     

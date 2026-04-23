@@ -60,17 +60,18 @@ float Bullet::getSpeed()
 }
 
 
-void Bullet::spawn(std::shared_ptr<Vector3f> position, std::shared_ptr<Vector3f> direction)
+void Bullet::spawn(std::shared_ptr<Vector3f> position, std::shared_ptr<Vector3f> direction, float orientation)
 {
     // TODO: might need to fix this - bullet will be inside of player?1
     this->getTransform()->setPosition(position);
+    this->getTransform()->setAngle(orientation);
 
     std::shared_ptr<Vector3f> velocity = this->getPhysicsComponent()->getVelocity();
 
     // set velocity to direction of player
     velocity->setX(direction->getX());
-    velocity->setX(direction->getY());
-    velocity->setX(direction->getZ());
+    velocity->setY(direction->getY());
+    velocity->setZ(direction->getZ());
 
     // make unit length
     velocity->normalise();
@@ -78,7 +79,7 @@ void Bullet::spawn(std::shared_ptr<Vector3f> position, std::shared_ptr<Vector3f>
     // scale by speed for velocity vector
     velocity->scale(speed);
 
-    this->getPhysicsComponent()->setVelocity(velocity);
+    //this->getPhysicsComponent()->setVelocity(velocity);
 
     ttl = MAX_TTL;
 
