@@ -8,7 +8,7 @@
 
 #include <iostream>  
 
-const float Bullet::MAX_TTL = 0.01f;
+const float Bullet::MAX_TTL = 1.0f;
 
 Bullet::Bullet() : GameObject()
 {
@@ -29,12 +29,13 @@ void Bullet::update()
 {
     float delta = timer->getDeltaTime();
 
-    std::cout << "TTL:" << ttl << std::endl;
-
     ttl -= delta;
 
     if(ttl < 0.0f) 
+    {
         despawn();
+    }
+
 
 }
 
@@ -82,6 +83,7 @@ void Bullet::spawn(std::shared_ptr<Vector3f> position, std::shared_ptr<Vector3f>
     ttl = MAX_TTL;
 
     this->enable();
+
 }
 
 void Bullet::despawn()

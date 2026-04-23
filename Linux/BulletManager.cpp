@@ -50,8 +50,10 @@ void BulletManager::spawnBullet(std::shared_ptr<Vector3f> position, std::shared_
         bullet->spawn(position, direction);
         std::cout << "Bullet manager spawning" << std::endl;
     }
-
-    std::cout << "Bullet manager has no bullets" << std::endl;
+    else 
+    {
+        std::cout << "Bullet manager has no bullets" << std::endl;
+    }
 
     // if no bullets just ignore?
 }

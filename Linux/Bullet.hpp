@@ -28,7 +28,7 @@ public:
     static const float MAX_TTL;
 private:
     int damage;
-    int ttl;
+    float ttl;
     float speed;
 
     std::shared_ptr<Timer> timer;

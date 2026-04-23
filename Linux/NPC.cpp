@@ -24,7 +24,7 @@ void NPC::update()
 {
     if(hp > 0)
     {
-        ai();
+      //  ai();
     }
     else
     {

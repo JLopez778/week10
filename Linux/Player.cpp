@@ -55,19 +55,23 @@ void Player::update()
     std::shared_ptr<Vector3f> centre = transform->getPosition();
 
     float angle = atan2f(mousePos->getY() - centre->getY(), mousePos->getX() - centre->getX());
-    angle = angle / (M_PI / 180.0f); // convert to degrees
+    angle = angle * (180.0f/M_PI); // convert to degrees
     this->getTransform()->setAngle(angle);
 
     // Firing
 
     if(InputManager::instance()->getFire() == true)
     {
-        std::shared_ptr<Transform> transform = this->getTransform();
-        
         std::shared_ptr<Vector3f> direction(new Vector3f(0.0f,1.0f,0.0f));
-        direction->rotate2D(transform->getAngle());// + this->getSprite()->getTexture()->getAngleOffset());
+        direction->rotate2D(angle);// + this->getSprite()->getTexture()->getAngleOffset());
+
+        std::cout << "direction:" << direction->getX() << "," << direction->getY() << std::endl;
 
         std::shared_ptr<Vector3f> position(new Vector3f(transform->getPosition()->getX(), transform->getPosition()->getY(), transform->getPosition()->getZ()));
+
+        Vector3f offset(*(direction.get()));
+        offset.scale(64);
+        position->add(offset);
 
         bulletManager->spawnBullet(position, direction);
 
