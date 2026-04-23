@@ -2,9 +2,21 @@
 #include "SDL2_Common.h"
 #include "InputManager.hpp"
 
+std::shared_ptr<Timer> Timer::timer = nullptr;
+
 Timer::Timer()
 {
 	deltaTime = 0.0f;
+}
+
+std::shared_ptr<Timer> Timer::instance()
+{
+    if(timer == nullptr)
+    {
+        timer.reset(new Timer());
+        timer->init();
+    }
+    return timer;
 }
 
 void Timer::init()

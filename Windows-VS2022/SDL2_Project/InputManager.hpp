@@ -12,6 +12,7 @@ class InputManager
 private:
 	// Singleton - private constructor!
 	InputManager();
+	void init();
 	
 	SDL_Event event;
 	bool quit;
@@ -19,16 +20,14 @@ private:
 	std::shared_ptr<Vector3f> mousePosition;
 	bool fire;
 
-public:
-	/* Alternative Singleton pattern using shared_ptr */
-	static std::shared_ptr<InputManager> instance()
-	{
-		static std::shared_ptr<InputManager> inputManager(new InputManager());
-		return inputManager;
-	}
-	~InputManager();
+	static std::shared_ptr<InputManager> inputManager;
 
-	void init();
+public:
+	
+	static std::shared_ptr<InputManager> instance();
+
+	~InputManager();
+	
 	void update();
 	bool isWindowClosedEvent();
 	float getHorizontalInput();

@@ -2,12 +2,24 @@
 #include "Vector3f.hpp"
 #include <iostream>
 
+std::shared_ptr<InputManager> InputManager::inputManager = nullptr;
+
 InputManager::InputManager()
 {
     keyStates = nullptr;
     quit = false;
     fire = false;
     mousePosition = nullptr;
+}
+
+std::shared_ptr<InputManager> InputManager::instance()
+{
+    if(inputManager == nullptr)
+    {
+        inputManager.reset(new InputManager());
+        inputManager->init();
+    }
+    return inputManager;
 }
 
 void InputManager::init()

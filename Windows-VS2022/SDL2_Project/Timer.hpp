@@ -16,13 +16,11 @@ private:
 	unsigned int prevTimeIndex;
 	unsigned int timeDelta;
 
+	static std::shared_ptr<Timer> timer;
+
 public:
 	/* Alternative Singlton pattern using shared_ptr */
-	static std::shared_ptr<Timer> instance()
-	{
-		static std::shared_ptr<Timer> timer(new Timer());
-		return timer;
-	}
+	static std::shared_ptr<Timer> instance();
 
 	void update();
 	float getDeltaTime();

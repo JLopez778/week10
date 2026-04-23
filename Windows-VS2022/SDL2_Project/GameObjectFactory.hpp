@@ -16,17 +16,13 @@ private:
 	GameObjectFactory();
 	void init();
 
+	static std::shared_ptr<GameObjectFactory> gof;
+
     std::shared_ptr<Renderer> renderer;
 
 public:
-	/* Alternative Singleton pattern using shared_ptr */
-	static std::shared_ptr<GameObjectFactory> instance()
-	{
-		static std::shared_ptr<GameObjectFactory> gof(new GameObjectFactory());
-        gof->init();
-		return gof;
-	}
-
+	static std::shared_ptr<GameObjectFactory> instance();
+	
     ~GameObjectFactory();
 
     std::shared_ptr<Background> createBackground();
