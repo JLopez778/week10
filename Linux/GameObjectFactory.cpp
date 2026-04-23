@@ -19,10 +19,22 @@
 
 #include "SDL2_Common.h"
 
+std::shared_ptr<GameObjectFactory> GameObjectFactory::gof = nullptr;
 
 GameObjectFactory::GameObjectFactory()
 {
     renderer = nullptr;
+}
+
+
+std::shared_ptr<GameObjectFactory> GameObjectFactory::instance()
+{
+    if (!gof) 
+    {
+        gof.reset(new GameObjectFactory());
+        gof->init();
+    }
+    return gof;
 }
 
 void GameObjectFactory::init()

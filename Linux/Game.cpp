@@ -78,7 +78,6 @@ void Game::init()
 
     timer = Timer::instance();
     inputManager = InputManager::instance();
-    inputManager->init();
 
     GameObjectFactory::instance();
 
