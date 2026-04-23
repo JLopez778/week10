@@ -11,7 +11,7 @@
             "program": "${workspaceFolder}/Linux/game",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "${fileDirname}",
+            "cwd": "${workspaceFolder}/Linux",
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",

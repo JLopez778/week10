@@ -3,7 +3,7 @@
 #include "GameObject.hpp"
 #include "Texture.hpp"
 
-Collider::Collider() : Component(gameObject)
+Collider::Collider() : Component()
 {
     radius = 0.0f;
     resolution = false;

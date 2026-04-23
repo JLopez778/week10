@@ -79,3 +79,15 @@ void Vector3f::normalise()
     this->scale(scale);
 }
 
+void Vector3f::rotate2D(float radians)
+{
+    float cosTheta = std::cosf(radians);
+    float sinTheta = std::sinf(radians);
+
+    float xNew = x * cosTheta - y * sinTheta;
+    float yNew = x * sinTheta + y * cosTheta;
+
+    x = xNew;
+    y = yNew;
+    z = 0.0f;
+}

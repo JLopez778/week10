@@ -3,12 +3,16 @@
 #include "Vector3f.hpp"
 #include "Transform.hpp"
 #include "Game.hpp"
+#include "Collider.hpp"
+#include "Bullet.hpp"
  
 #include <iostream> 
 
 NPC::NPC() : GameObject()
 {
     speed = 300.0f;
+    damage = 20;
+    hp = MAX_HP;
     name = "npc";
 }
 
@@ -18,7 +22,14 @@ NPC::~NPC()
 
 void NPC::update()
 {
-    ai();
+    if(hp > 0)
+    {
+      //  ai();
+    }
+    else
+    {
+        speed = 0.0f;
+    }
 }
 
 void NPC::setSpeed(float speed)
@@ -55,4 +66,21 @@ void NPC::handleCollision(std::shared_ptr<Collider> other)
 {
     speed = 0.0f;
     std::cout << "NPC says: Ouch!" << std::endl;
+
+    if(other->getGameObject()->getName() == "Bullet")
+    {
+        std::shared_ptr<Bullet> bullet = std::static_pointer_cast<Bullet>(other->getGameObject());
+        takeDamage(bullet->getDamage());
+    }
+        
+}
+
+void NPC::takeDamage(int damageDone)
+{
+    hp -= damageDone;
+}
+
+int NPC::getDamage()
+{
+   return damage;
 }

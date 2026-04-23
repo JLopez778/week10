@@ -78,6 +78,8 @@ void Game::init()
 
     timer = Timer::instance();
     inputManager = InputManager::instance();
+    inputManager->init();
+
     GameObjectFactory::instance();
 
     physicsEngine = std::shared_ptr<PhysicsEngine>(new PhysicsEngine());
@@ -87,13 +89,11 @@ void Game::init()
     collisionEngine->init(MAX_GAME_OBJECTS);
 
     std::shared_ptr<Background> background = GameObjectFactory::instance()->createBackground();
-    registerGameObject(background);
-
+    
     std::shared_ptr<Player> player = GameObjectFactory::instance()->createPlayer();
-    registerGameObject(player);
 
     std::shared_ptr<NPC> npc = GameObjectFactory::instance()->createNPC();
-    registerGameObject(npc);
+    
 }
 
 void Game::setupGameState()
@@ -177,7 +177,25 @@ std::shared_ptr<Renderer> Game::getRenderer()
 
 void Game::registerGameObject(std::shared_ptr<GameObject> newGO)
 {
-    gameObjects.push_back(newGO);
+    bool added = false;
+    std::vector<std::shared_ptr<GameObject>>::iterator itt;
+    for(itt = gameObjects.begin(); itt != gameObjects.end(); ++itt)
+    {
+        if(*itt == nullptr)
+        {
+            *itt = newGO;
+            added = true;
+            break;
+        }
+    }
+
+    if(added == false) 
+    {
+        std::cout << "Ran out of pre-allocated game objects" << std::endl;
+        // No point in registering the rest of the components it would
+        // just crash
+        return; // need better error handling!
+    }
 
     std::shared_ptr<Sprite> sprite = newGO->getSprite();
 

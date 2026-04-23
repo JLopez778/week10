@@ -5,6 +5,8 @@
 #include "Transform.hpp"
 #include "Vector3f.hpp" 
 
+#include <iostream>
+
 CollisionEngine::CollisionEngine()
 {
     maxObjects = 0;
@@ -28,7 +30,20 @@ void CollisionEngine::init(int maxObjects)
 
 void CollisionEngine::addCollider(std::shared_ptr<Collider> body)
 {
-    colliders.push_back(body);
+    bool added = false;
+    std::vector<std::shared_ptr<Collider>>::iterator itt;
+    for(itt = colliders.begin(); itt != colliders.end(); ++itt)
+    {
+        if(*itt == nullptr)
+        {
+            *itt = body;
+            added = true;
+            break;
+        }
+    }
+
+    if(added == false)
+        std::cout << "Ran out of pre-allocated collider components" << std::endl;
 }
 
 bool CollisionEngine::removeCollider(std::shared_ptr<Collider> body)
@@ -37,8 +52,7 @@ bool CollisionEngine::removeCollider(std::shared_ptr<Collider> body)
     std::vector<std::shared_ptr<Collider>>::iterator itt;
     for(itt = colliders.begin(); itt != colliders.end(); ++itt)
     {
-        std::shared_ptr<Collider> temp = *itt;
-        if(temp == body)
+        if(*itt == body)
         {
             colliders.erase(itt);
             // itt - now invalid as we've altered the vector!
@@ -66,6 +80,9 @@ void CollisionEngine::check()
         if(colliderOne == nullptr)
             continue;
 
+        if(colliderOne->getGameObject()->isEnabled() == false)
+            continue;
+
         std::shared_ptr<Collider> colliderTwo;
 
         std::vector<std::shared_ptr<Collider>>::iterator itt2;
@@ -75,6 +92,9 @@ void CollisionEngine::check()
             colliderTwo = *itt2;
 
             if(colliderTwo == nullptr)
+                continue;
+
+            if(colliderTwo->getGameObject()->isEnabled() == false)
                 continue;
 
             // Check we're not comparing to ourself!

@@ -157,6 +157,8 @@ xcopy /y /d /I /e "$(ProjectDir)assets\*.*" "$(OutDir)assets"
     <ClCompile Include="GameObjectFactory.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="CollisionEngine.cpp" />
+    <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="BulletManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Component.hpp" />
@@ -180,6 +182,8 @@ xcopy /y /d /I /e "$(ProjectDir)assets\*.*" "$(OutDir)assets"
     <ClInclude Include="GameObjectFactory.hpp" />
     <ClInclude Include="Collider.hpp" />
     <ClInclude Include="CollisionEngine.hpp" />
+    <ClInclude Include="Bullet.hpp" />
+    <ClInclude Include="BulletManager.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
