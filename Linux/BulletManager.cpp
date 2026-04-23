@@ -34,7 +34,6 @@ void BulletManager::init(int maxObjects)
     std::vector<std::shared_ptr<Bullet>>::iterator itt;
     for(itt = bullets.begin(); itt != bullets.end(); ++itt)
     {
-         //std::shared_ptr<Bullet> temp = *itt;
          (*itt) = GameObjectFactory::instance()->createBullet();
          (*itt)->disable();
     }

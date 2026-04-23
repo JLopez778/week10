@@ -52,8 +52,7 @@ bool CollisionEngine::removeCollider(std::shared_ptr<Collider> body)
     std::vector<std::shared_ptr<Collider>>::iterator itt;
     for(itt = colliders.begin(); itt != colliders.end(); ++itt)
     {
-        std::shared_ptr<Collider> temp = *itt;
-        if(temp == body)
+        if(*itt == body)
         {
             colliders.erase(itt);
             // itt - now invalid as we've altered the vector!

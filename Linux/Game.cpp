@@ -90,9 +90,7 @@ void Game::init()
 
     std::shared_ptr<Background> background = GameObjectFactory::instance()->createBackground();
     
-
     std::shared_ptr<Player> player = GameObjectFactory::instance()->createPlayer();
-    
 
     std::shared_ptr<NPC> npc = GameObjectFactory::instance()->createNPC();
     
@@ -191,8 +189,13 @@ void Game::registerGameObject(std::shared_ptr<GameObject> newGO)
         }
     }
 
-    if(added == false)
+    if(added == false) 
+    {
         std::cout << "Ran out of pre-allocated game objects" << std::endl;
+        // No point in registering the rest of the components it would
+        // just crash
+        return; // need better error handling!
+    }
 
     std::shared_ptr<Sprite> sprite = newGO->getSprite();
 

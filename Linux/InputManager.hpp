@@ -13,7 +13,6 @@ private:
 	// Singleton - private constructor!
 	InputManager();
 	
-
 	SDL_Event event;
 	bool quit;
 	const Uint8* keyStates;
