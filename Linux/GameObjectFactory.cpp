@@ -165,7 +165,7 @@ std::shared_ptr<NPC> GameObjectFactory::createNPC()
     std::shared_ptr<Texture> npcTexture = std::shared_ptr<Texture>(new Texture());
     
     // This mess loads a texture .. make this better. 
-    SDL_Surface* temp = IMG_Load("assets/images/playerShip.png");
+    SDL_Surface* temp = IMG_Load("assets/images/enemy.png");
 
     npcTexture->setTexture(SDL_CreateTextureFromSurface(renderer->getRenderer(), temp));
 
@@ -239,7 +239,7 @@ std::shared_ptr<Bullet> GameObjectFactory::createBullet()
     std::shared_ptr<Texture> bulletTexture = std::shared_ptr<Texture>(new Texture());
     
     // This mess loads a texture .. make this better. 
-    SDL_Surface* temp = IMG_Load("assets/images/playerShip.png");
+    SDL_Surface* temp = IMG_Load("assets/images/laser.png");
 
     bulletTexture->setTexture(SDL_CreateTextureFromSurface(renderer->getRenderer(), temp));
 

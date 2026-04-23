@@ -73,12 +73,12 @@ void InputManager::update()
     this->mousePosition->setX(mouseX);
     this->mousePosition->setY(mouseY);
 
+    fire = false;
+
     if (button) 
     {
         if(button == SDL_BUTTON(SDL_BUTTON_RIGHT))
             fire = true;
-        else
-            fire = false;
     }
 }
 
