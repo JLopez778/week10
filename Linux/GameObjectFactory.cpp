@@ -83,6 +83,8 @@ std::shared_ptr<Background> GameObjectFactory::createBackground()
 
     background->enable();
 
+    Game::instance()->registerGameObject(background);
+
     return background;
 }
 
@@ -145,6 +147,8 @@ std::shared_ptr<Player> GameObjectFactory::createPlayer()
     player->setCollisionComponent(collider);
 
     player->enable();
+
+    Game::instance()->registerGameObject(player);
 
     return player;
 }
@@ -218,6 +222,8 @@ std::shared_ptr<NPC> GameObjectFactory::createNPC()
 
     npc->enable();
 
+    Game::instance()->registerGameObject(npc);
+
     return npc;
 }
 
@@ -289,6 +295,8 @@ std::shared_ptr<Bullet> GameObjectFactory::createBullet()
     bullet->setCollisionComponent(collider);
 
     bullet->enable();
+
+    Game::instance()->registerGameObject(bullet);
 
     return bullet;
 }
