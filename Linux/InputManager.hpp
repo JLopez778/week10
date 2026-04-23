@@ -12,7 +12,7 @@ class InputManager
 private:
 	// Singleton - private constructor!
 	InputManager();
-	void init();
+	
 
 	SDL_Event event;
 	bool quit;
@@ -25,11 +25,11 @@ public:
 	static std::shared_ptr<InputManager> instance()
 	{
 		static std::shared_ptr<InputManager> inputManager(new InputManager());
-		inputManager->init();
 		return inputManager;
 	}
 	~InputManager();
 
+	void init();
 	void update();
 	bool isWindowClosedEvent();
 	float getHorizontalInput();

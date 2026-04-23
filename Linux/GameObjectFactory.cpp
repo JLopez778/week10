@@ -113,6 +113,7 @@ std::shared_ptr<Player> GameObjectFactory::createPlayer()
     
     SDL_QueryTexture(playerTexture->getTexture(), NULL, NULL, &source.w, &source.h);
     playerTexture->setSourceRectangle(source);
+    playerTexture->setAngleOffset(90.0f);
 
     playerSprite->setTexture(playerTexture);
     

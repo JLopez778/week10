@@ -78,6 +78,8 @@ void Game::init()
 
     timer = Timer::instance();
     inputManager = InputManager::instance();
+    inputManager->init();
+
     GameObjectFactory::instance();
 
     physicsEngine = std::shared_ptr<PhysicsEngine>(new PhysicsEngine());
