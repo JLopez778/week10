@@ -19,6 +19,9 @@ public:
     void setSpeed(float speed);
     float getSpeed();
     void takeDamage(int damage);
+    void death();
+
+    void CooldownTimer();
 
     void handleCollision(std::shared_ptr<Collider> other);
 
@@ -27,6 +30,7 @@ public:
 private:
     float speed;
     int hp;
+    bool playerDeath;
     std::shared_ptr<BulletManager> bulletManager;
 };
 

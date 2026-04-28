@@ -6,7 +6,7 @@
 
 class Bullet;
 class Vector3f;
-
+class Timer;
 class BulletManager {
 
 public:
@@ -22,6 +22,8 @@ private:
     std::vector<std::shared_ptr<Bullet>> bullets;
 
     std::shared_ptr<Bullet> nextFree();
+
+    std::shared_ptr<Timer> timer;
 };
 
 #endif

@@ -42,3 +42,6 @@ float Timer::getDeltaTime()
 {
     return deltaTime;
 }
+
+//void Timer::Restart() {
+

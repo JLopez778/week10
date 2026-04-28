@@ -23,6 +23,8 @@
 #include "Player.hpp"
 #include "NPC.hpp"
 
+#include "score.hpp"
+
 #include <iostream>
 
 Game::Game()
@@ -88,11 +90,14 @@ void Game::init()
     collisionEngine->init(MAX_GAME_OBJECTS);
 
     std::shared_ptr<Background> background = GameObjectFactory::instance()->createBackground();
-    
+
     std::shared_ptr<Player> player = GameObjectFactory::instance()->createPlayer();
 
-    std::shared_ptr<NPC> npc = GameObjectFactory::instance()->createNPC();
-    
+    score.reset(new Score());
+
+    std::shared_ptr<NPC> npc = GameObjectFactory::instance()->createNPC("assets/images/Enemy1.png");
+    std::shared_ptr<NPC> npc2 = GameObjectFactory::instance()->createNPC("assets/images/Enemy2.png");
+    std::shared_ptr<NPC> npc3 = GameObjectFactory::instance()->createNPC("assets/images/Enemy3.png");
 }
 
 void Game::setupGameState()
@@ -234,4 +239,10 @@ std::shared_ptr<GameObject> Game::findGameObjectByName(std::string name)
     }
 
     return found;
+}
+
+
+std::shared_ptr<Score> Game::getScore()
+{
+    return score;
 }

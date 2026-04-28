@@ -10,11 +10,13 @@ private:
 	Timer();
 	void init();
 	float deltaTime;
+	bool restart;
 
 	// Timing variables
 	unsigned int currentTimeIndex;
 	unsigned int prevTimeIndex;
 	unsigned int timeDelta;
+	
 
 	static std::shared_ptr<Timer> timer;
 

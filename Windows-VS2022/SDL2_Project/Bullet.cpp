@@ -17,6 +17,8 @@ Bullet::Bullet() : GameObject()
     speed = 100;
     ttl = MAX_TTL;
 
+    
+
     //cache timer
     timer = Timer::instance();
 }
@@ -85,6 +87,8 @@ void Bullet::spawn(std::shared_ptr<Vector3f> position, std::shared_ptr<Vector3f>
 
     this->enable();
 
+   
+
 }
 
 void Bullet::despawn()
@@ -96,4 +100,8 @@ void Bullet::despawn()
 void Bullet::handleCollision(std::shared_ptr<Collider> other)
 {
     //despawn();
+    
 }
+
+//void Bullet::Reload_Time(std::shared_ptr<Timer> reload) {
+

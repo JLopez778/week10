@@ -5,6 +5,8 @@
 #include "Game.hpp"
 #include "Collider.hpp"
 #include "Bullet.hpp"
+#include "score.hpp"
+#include "window.hpp"
  
 #include <iostream> 
 
@@ -14,7 +16,10 @@ NPC::NPC() : GameObject()
     damage = 20;
     hp = MAX_HP;
     name = "npc";
+    
 }
+
+    
 
 NPC::~NPC()
 {
@@ -84,3 +89,38 @@ int NPC::getDamage()
 {
    return damage;
 }
+
+void NPC::defeat() {
+    if (hp == 0) {
+
+        bool defeated = true;
+        float currentScore = Game::instance()->getScore()->getScore();
+        currentScore += 1.0f;
+        Game::instance()->getScore()->setScore(currentScore);
+    }
+
+}
+
+void NPC::reset() {
+    if (bool defeated = true) {
+        float positionY = Window::WINDOW_HEIGHT / 2;
+        float positionX = Window::WINDOW_WIDTH / 2;
+    }
+
+    
+}
+
+//bool NPC::move(float movePosY, float movePosX){
+
+    //int positionY = positionY + movePosY;
+    ///int positionX = positionX + movePosX;
+
+    
+
+
+    
+
+
+
+
+

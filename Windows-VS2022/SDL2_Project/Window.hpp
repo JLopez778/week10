@@ -11,13 +11,13 @@ public:
 
     bool init();
     SDL_Window* getWindow();
-
     static const int WINDOW_WIDTH = 800;
-    static const int WINDOW_HEIGHT= 600;
+    static const int WINDOW_HEIGHT = 600;
+
+
 
 private:
     SDL_Window* window;
 
 };
-
 #endif

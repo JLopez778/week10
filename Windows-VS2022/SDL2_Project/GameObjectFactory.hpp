@@ -2,6 +2,7 @@
 #define GAMEOBJECTFACTORY_HPP
 
 #include <memory>
+#include <string>
 
 class Background;
 class Player;
@@ -27,7 +28,7 @@ public:
 
     std::shared_ptr<Background> createBackground();
     std::shared_ptr<Player> createPlayer();
-    std::shared_ptr<NPC> createNPC();
+    std::shared_ptr<NPC> createNPC(std::string path);
 	std::shared_ptr<Bullet> createBullet();
 
 	const int MAX_BULLETS = 32;

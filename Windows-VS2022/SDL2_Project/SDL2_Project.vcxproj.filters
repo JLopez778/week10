@@ -24,6 +24,8 @@
     <ClCompile Include="CollisionEngine.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="BulletManager.cpp" />
+    <ClCompile Include="textureManager.cpp" />
+    <ClCompile Include="score.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Component.hpp" />
@@ -49,5 +51,7 @@
     <ClInclude Include="CollisionEngine.hpp" />
     <ClInclude Include="Bullet.hpp" />
     <ClInclude Include="BulletManager.hpp" />
+    <ClInclude Include="textureManager.hpp" />
+    <ClInclude Include="score.hpp" />
   </ItemGroup>
 </Project>

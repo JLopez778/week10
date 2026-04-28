@@ -58,7 +58,7 @@ std::shared_ptr<Background> GameObjectFactory::createBackground()
     std::shared_ptr<Texture> backgroundTexture = std::shared_ptr<Texture>(new Texture());
     
     // This mess loads a texture .. make this better. 
-    SDL_Surface* temp = IMG_Load("assets/images/background.png");
+    SDL_Surface* temp = IMG_Load("assets/images/space_back1.png");
 
     backgroundTexture->setTexture(SDL_CreateTextureFromSurface(renderer->getRenderer(), temp));
 
@@ -166,10 +166,17 @@ std::shared_ptr<Player> GameObjectFactory::createPlayer()
     return player;
 }
 
-std::shared_ptr<NPC> GameObjectFactory::createNPC()
+std::shared_ptr<NPC> GameObjectFactory::createNPC(std::string path)
 {
     std::shared_ptr<NPC> npc = std::shared_ptr<NPC>(new NPC());
+   // class Alien {
 
+    
+    
+   // class Alien_Breed {
+
+    
+    
     // Sprite
     std::shared_ptr<Sprite> npcSprite = std::shared_ptr<Sprite>(new Sprite());
 
@@ -177,7 +184,7 @@ std::shared_ptr<NPC> GameObjectFactory::createNPC()
     std::shared_ptr<Texture> npcTexture = std::shared_ptr<Texture>(new Texture());
     
     // This mess loads a texture .. make this better. 
-    SDL_Surface* temp = IMG_Load("assets/images/enemy.png");
+    SDL_Surface* temp = IMG_Load(path);
 
     npcTexture->setTexture(SDL_CreateTextureFromSurface(renderer->getRenderer(), temp));
 

@@ -7,6 +7,7 @@
 #include "Transform.hpp"
 #include "Vector3f.hpp"
 #include "GameObjectFactory.hpp"
+#include "Timer.hpp"
 
 #include <iostream>
 
