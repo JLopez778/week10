@@ -1,13 +1,29 @@
 #include <iostream>
 #include "score.hpp"
+#include"NPC.hpp"
 
-
-void Score::setScore(float newScore)
-{
-	score = newScore;
+Score::Score() {
+	scoreVal(0);
 }
 
-float Score::getScore()
-{
-	return score;
+Score::~Score() {
+	clearScore();
+}
+
+void Score::clearScore() {
+	for (int i = 0; i < mscore.size(); i++) {
+		delete mscore[i];
+		mscore[i] = NULL;
+	}
+	mscore.clear();
+}
+
+void Score::scoreVal(int scoreVal (std::shared_ptr<NPC>)) {
+	clearScore();
+	
+	if (score == 0) {
+		for (int i = 0; i < 100; i++) {
+		 
+		}
+	}
 }

@@ -15,6 +15,7 @@ std::shared_ptr<Timer> Timer::instance()
     {
         timer.reset(new Timer());
         timer->init();
+        
     }
     return timer;
 }

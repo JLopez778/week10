@@ -20,7 +20,7 @@ public:
     
     void reset();
     bool move(float Y, float X);
-    void defeat();
+    static std::shared_ptr<NPC> defeat() ;
 
     void ai();
     void handleCollision(std::shared_ptr<Collider> other);
@@ -30,7 +30,7 @@ public:
     static const int MAX_HP = 50;
 private:
     float speed;
-    int hp;
+    int hp = 0;
     int damage;
     bool defeated = false;
     bool resetPos = false;
@@ -38,6 +38,10 @@ private:
     float positionX;
     float movePosY = 5;
     float movePosX = 5;
+    Texture image;
+    static std::shared_ptr<NPC> npc;
+
+    
 
 };
 

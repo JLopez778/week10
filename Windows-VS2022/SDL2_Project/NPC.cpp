@@ -9,7 +9,7 @@
 #include "window.hpp"
  
 #include <iostream> 
-
+std::shared_ptr<NPC> NPC::npc = nullptr;
 NPC::NPC() : GameObject()
 {
     speed = 300.0f;
@@ -23,6 +23,7 @@ NPC::NPC() : GameObject()
 
 NPC::~NPC()
 {
+    delete image;
 }
 
 void NPC::update()
@@ -90,15 +91,13 @@ int NPC::getDamage()
    return damage;
 }
 
-void NPC::defeat() {
+std::shared_ptr<NPC> NPC::defeat() {
     if (hp == 0) {
+        defeated = true;
+        std::shared_ptr<defeated>
 
-        bool defeated = true;
-        float currentScore = Game::instance()->getScore()->getScore();
-        currentScore += 1.0f;
-        Game::instance()->getScore()->setScore(currentScore);
+
     }
-
 }
 
 void NPC::reset() {
