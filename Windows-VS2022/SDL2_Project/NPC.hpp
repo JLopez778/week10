@@ -10,10 +10,10 @@ class Score;
 class NPC : public GameObject {
 
 public:
-    NPC();
+    NPC(Vector3f position, float initOrientation, Vector3f initSize, Texture NPCIMG, float intitalPhase, float initialPhaseVelocity);
     ~NPC();
 
-    void update();
+    void update(double tDelta) ;
 
     void setSpeed(float speed);
     float getSpeed();
@@ -28,6 +28,7 @@ public:
     int getDamage();
 
     static const int MAX_HP = 50;
+
 private:
     float speed;
     int hp = 0;
@@ -38,8 +39,14 @@ private:
     float positionX;
     float movePosY = 5;
     float movePosX = 5;
-    Texture image;
-    static std::shared_ptr<NPC> npc;
+    float phaseAngle;
+    float phaseVelocity;
+    float initSize;
+    float initalPhase;
+    float initialPhaseVelocity;
+
+    Texture NPCIMG;
+    
 
     
 

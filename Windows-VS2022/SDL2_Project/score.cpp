@@ -23,7 +23,7 @@ void Score::scoreVal(int scoreVal (std::shared_ptr<NPC>)) {
 	
 	if (score == 0) {
 		for (int i = 0; i < 100; i++) {
-		 
+			mscore.push_back(new Texture("0", 32, {230, 230, 230}));
 		}
 	}
 }

@@ -50,6 +50,7 @@ float NPC::getSpeed()
 
 void NPC::ai()
 {
+    {
     //brittle!
     std::shared_ptr<GameObject> player = Game::instance()->findGameObjectByName("player");
 
@@ -71,7 +72,7 @@ void NPC::ai()
 void NPC::handleCollision(std::shared_ptr<Collider> other)
 {
     speed = 0.0f;
-    std::cout << "NPC says: Ouch!" << std::endl;
+    cout << "NPC says: Ouch!" << std::endl;
 
     if(other->getGameObject()->getName() == "Bullet")
     {

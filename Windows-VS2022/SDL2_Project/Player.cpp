@@ -115,10 +115,12 @@ void Player::takeDamage(int damage)
 
 void Player::death() {
     if (hp == 0) {
-        std::shared_ptr<Vector3f> pos = this->getTransform()->getPosition();
+        if (lives > 0) {
+            std::shared_ptr<Vector3f> pos = this->getTransform()->getPosition();
 
 
-        this->getTransform()->setPosition(0);
+            this->getTransform()->setPosition(0);
+        }
     }
 }
 

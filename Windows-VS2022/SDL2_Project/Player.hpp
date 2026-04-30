@@ -30,6 +30,7 @@ public:
 private:
     float speed;
     int hp;
+    int lives = 5;
     bool playerDeath;
     std::shared_ptr<BulletManager> bulletManager;
 };
