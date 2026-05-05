@@ -7,13 +7,14 @@
 #include "Bullet.hpp"
 #include "score.hpp"
 #include "window.hpp"
+#include "score.hpp"
  
 #include <iostream> 
-std::shared_ptr<NPC> NPC::npc = nullptr;
+
 NPC::NPC() : GameObject()
 {
     speed = 300.0f;
-    damage = 20;
+    
     hp = MAX_HP;
     name = "npc";
     
@@ -23,19 +24,12 @@ NPC::NPC() : GameObject()
 
 NPC::~NPC()
 {
-    delete image;
+    
 }
 
 void NPC::update()
 {
-    if(hp > 0)
-    {
-      //  ai();
-    }
-    else
-    {
-        speed = 0.0f;
-    }
+    ai();
 }
 
 void NPC::setSpeed(float speed)
@@ -50,7 +44,7 @@ float NPC::getSpeed()
 
 void NPC::ai()
 {
-    {
+    
     //brittle!
     std::shared_ptr<GameObject> player = Game::instance()->findGameObjectByName("player");
 
@@ -69,53 +63,59 @@ void NPC::ai()
     }
 }
 
-void NPC::handleCollision(std::shared_ptr<Collider> other)
+    void NPC::handleCollision(std::shared_ptr<Collider> other)
 {
     speed = 0.0f;
-    cout << "NPC says: Ouch!" << std::endl;
+    std::cout << "NPC says: Ouch!" << std::endl;
 
     if(other->getGameObject()->getName() == "Bullet")
     {
         std::shared_ptr<Bullet> bullet = std::static_pointer_cast<Bullet>(other->getGameObject());
-        takeDamage(bullet->getDamage());
+       // takeDamage(bullet->getDamage());
+        this->defeated = true;
     }
         
 }
 
-void NPC::takeDamage(int damageDone)
-{
-    hp -= damageDone;
+    void NPC::spawn() {}
+
+
+
+int NPC::getDamage(){
+    std::shared_ptr<GameObject> gameObject = Game::instance()->findGameObjectByName("player");
+
+    std::shared_ptr<Player> player = std::static_pointer_cast<Player>(gameObject);
+  
+    // needs a method in player
+//    player->getDamage();
+
+    return 0;
 }
 
-int NPC::getDamage()
-{
-   return damage;
+void NPC::defeat() {
+    defeated = true;
+    std::shared_ptr<GameObject> player = Game::instance()->findGameObjectByName("player");
+    std::static_pointer_cast<Player>(player)->getScore()->inreaseScore(10);
 }
 
-std::shared_ptr<NPC> NPC::defeat() {
-    if (hp == 0) {
-        defeated = true;
-        std::shared_ptr<defeated>
+void NPC::move() {
 
-
-    }
 }
+
 
 void NPC::reset() {
-    if (bool defeated = true) {
-        float positionY = Window::WINDOW_HEIGHT / 2;
-        float positionX = Window::WINDOW_WIDTH / 2;
+    if (defeated == true) {
+        float positionY = Window::WINDOW_HEIGHT / 2.0f;
+        float positionX = Window::WINDOW_WIDTH / 2.0f;
     }
 
     
 }
 
-//bool NPC::move(float movePosY, float movePosX){
 
-    //int positionY = positionY + movePosY;
-    ///int positionX = positionX + movePosX;
 
     
+
 
 
     

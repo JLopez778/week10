@@ -15,6 +15,7 @@ Bullet::Bullet() : GameObject()
     name = "Bullet";
     damage = 10;
     speed = 100;
+   
     ttl = MAX_TTL;
 
     
@@ -54,11 +55,13 @@ int Bullet::getDamage()
 void Bullet::setSpeed(float speed)
 {
     this->speed = speed;
+   
 }
 
 float Bullet::getSpeed()
 {
     return speed;
+   
 }
 
 
@@ -99,7 +102,7 @@ void Bullet::despawn()
 
 void Bullet::handleCollision(std::shared_ptr<Collider> other)
 {
-    //despawn();
+    despawn();
     
 }
 

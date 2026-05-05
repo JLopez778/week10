@@ -58,7 +58,7 @@ std::shared_ptr<Background> GameObjectFactory::createBackground()
     std::shared_ptr<Texture> backgroundTexture = std::shared_ptr<Texture>(new Texture());
     
     // This mess loads a texture .. make this better. 
-    SDL_Surface* temp = IMG_Load("assets/images/space_back1.png");
+    SDL_Surface* temp = IMG_Load("assets/images/space_back1.jpg");
 
     backgroundTexture->setTexture(SDL_CreateTextureFromSurface(renderer->getRenderer(), temp));
 
@@ -184,7 +184,7 @@ std::shared_ptr<NPC> GameObjectFactory::createNPC(std::string path)
     std::shared_ptr<Texture> npcTexture = std::shared_ptr<Texture>(new Texture());
     
     // This mess loads a texture .. make this better. 
-    SDL_Surface* temp = IMG_Load(path);
+    SDL_Surface* temp = IMG_Load(path.c_str());
 
     npcTexture->setTexture(SDL_CreateTextureFromSurface(renderer->getRenderer(), temp));
 
@@ -208,13 +208,14 @@ std::shared_ptr<NPC> GameObjectFactory::createNPC(std::string path)
     std::shared_ptr<Transform> npcTransform = std::shared_ptr<Transform>(new Transform());
     npcTransform->setAngle(0.0f);
 
-    std::shared_ptr<Vector3f> offscreen = std::shared_ptr<Vector3f>(new Vector3f(0.0f,0.0f,0.0f));
+    std::shared_ptr<Vector3f> offscreen = std::shared_ptr<Vector3f>(new Vector3f(50.0f,40.0f,30.0f));
 
     float w = Window::WINDOW_WIDTH;
     float h = Window::WINDOW_HEIGHT;
 
     // Make this a random offscreen position
     offscreen->setX(w+10.0f);
+   // offscreen->setX(w / 2.0f);
     offscreen->setY(h/2.0f);
     
     npcTransform->setPosition(offscreen);  
@@ -314,6 +315,7 @@ std::shared_ptr<Bullet> GameObjectFactory::createBullet()
     // setup two way relationship
     collider->setGameObject(bullet);
     bullet->setCollisionComponent(collider);
+   
 
     bullet->enable();
 

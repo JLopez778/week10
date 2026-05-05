@@ -104,5 +104,7 @@ std::shared_ptr<Vector3f> InputManager::getMousePosition()
 
 bool InputManager::getFire()
 {
-    return fire;
+    //if (keyStates[SDLK_SPACE])
+    
+        return fire;
 }

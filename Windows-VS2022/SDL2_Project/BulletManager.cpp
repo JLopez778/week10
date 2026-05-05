@@ -45,6 +45,7 @@ void BulletManager::spawnBullet(std::shared_ptr<Vector3f> position, std::shared_
 {
     std::shared_ptr<Bullet> bullet = this->nextFree();
 
+
     if(bullet != nullptr)
     {   
         bullet->spawn(position, direction, orientation);

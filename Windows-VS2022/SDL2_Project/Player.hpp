@@ -5,6 +5,7 @@
 #include "GameObject.hpp"
 
 class BulletManager;
+class Score;
 
 class Player : public GameObject {
 
@@ -18,10 +19,12 @@ public:
 
     void setSpeed(float speed);
     float getSpeed();
-    void takeDamage(int damage);
+    void  takeDamage( std::shared_ptr<Player>  damage);
     void death();
 
     void CooldownTimer();
+
+    std::shared_ptr<Score> getScore();
 
     void handleCollision(std::shared_ptr<Collider> other);
 
@@ -33,6 +36,7 @@ private:
     int lives = 5;
     bool playerDeath;
     std::shared_ptr<BulletManager> bulletManager;
+    std::shared_ptr<Score> score;
 };
 
 #endif

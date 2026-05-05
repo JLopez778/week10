@@ -95,9 +95,10 @@ void Game::init()
 
     score.reset(new Score());
 
-    std::shared_ptr<NPC> npc = GameObjectFactory::instance()->createNPC("assets/images/Enemy1.png");
+    std::shared_ptr<NPC> npc = GameObjectFactory::instance()->createNPC("assets/images/Enemy.png");
     std::shared_ptr<NPC> npc2 = GameObjectFactory::instance()->createNPC("assets/images/Enemy2.png");
     std::shared_ptr<NPC> npc3 = GameObjectFactory::instance()->createNPC("assets/images/Enemy3.png");
+    //std::shared_ptr<NPC> npc = GameObjectFactory::instance()->createNPC("assets/images/playerShip.png");
 }
 
 void Game::setupGameState()

@@ -9,14 +9,16 @@
 
 #include "Sprite.hpp"
 #include "Texture.hpp"
+#include "score.hpp"
 
 #include <iostream>  
 
 Player::Player() : GameObject()
 {
-    speed = 500.0f;
+    speed = 700.00f;
     name = "player";
     bulletManager = nullptr;
+    score = nullptr; 
 }
 
 Player::~Player()
@@ -59,7 +61,7 @@ void Player::update()
     this->getTransform()->setAngle(angleDegrees);
 
     // Firing
-
+    //std::cout << InputManager::instance()->getFire() << std::endl;
     if(InputManager::instance()->getFire() == true)
     {
         std::shared_ptr<Vector3f> direction(new Vector3f(0.0f,-1.0f,0.0f));
@@ -97,7 +99,7 @@ void Player::handleCollision(std::shared_ptr<Collider> other)
     if(other->getGameObject()->getName() == "NPC")
     {
         std::shared_ptr<NPC> npc = std::static_pointer_cast<NPC>(other->getGameObject());
-        takeDamage(npc->getDamage());
+        (npc->getDamage());
     }
         
 }
@@ -106,24 +108,31 @@ void Player::init(int maxBullets)
 {
     bulletManager.reset(new BulletManager());
     bulletManager->init(MAX_BULLETS);
+
+    score.reset(new Score());
 }
 
-void Player::takeDamage(int damage)
+void Player::takeDamage(std::shared_ptr<Player> damage)
 {
-    hp -= damage;
+    lives = lives -= 1;
 }
 
 void Player::death() {
     if (hp == 0) {
         if (lives > 0) {
             std::shared_ptr<Vector3f> pos = this->getTransform()->getPosition();
-
-
-            this->getTransform()->setPosition(0);
+            pos->setX(10.0f);
+            pos->setY(10.0f);
         }
     }
 }
 
 void Player::CooldownTimer() {
     
+}
+
+
+std::shared_ptr<Score> Player::getScore()
+{
+    return score;
 }

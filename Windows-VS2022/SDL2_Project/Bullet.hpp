@@ -30,6 +30,7 @@ private:
     int damage;
     float ttl;
     float speed;
+    
 
     std::shared_ptr<Timer> timer;
 };
